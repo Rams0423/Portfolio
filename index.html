@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CHANGED: Added a meta description for better SEO -->
+    <meta name="description" content="Portfolio of Rambabu Dharanala, a Full Stack Java Developer with 6+ years of experience in Spring Boot, React, and AWS. Specializing in microservices and cloud-native applications.">
+    
     <title>Rambabu Dharanala | Full Stack Developer</title>
     
+    <!-- NEW: Added a favicon for a more professional look in browser tabs -->
+    <link rel="icon" type="image/png" href="https://www.google.com/s2/favicons?domain=rambabudharanala.com&sz=32">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
@@ -18,16 +24,35 @@
 
     <!-- Custom Styles -->
     <style>
+        /* NEW: Added CSS variables for easy theme customization */
+        :root {
+            --primary-color: #0d6efd;
+            --dark-color: #343a40;
+            --light-color: #f8f9fa;
+            --white-color: #ffffff;
+            --text-color: #343a40;
+        }
+
+        /* NEW: Added smooth scrolling behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f8f9fa;
-            color: #343a40;
+            background-color: var(--light-color);
+            color: var(--text-color);
         }
         .navbar {
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
+        /* NEW: Style for active navigation link */
+        .navbar-nav .nav-link.active {
+            color: var(--primary-color) !important;
+            font-weight: 600;
+        }
         .hero {
-            background: #ffffff;
+            background: var(--white-color);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -41,11 +66,13 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         #dynamic-title {
-            color: #0d6efd;
+            color: var(--primary-color);
             transition: opacity 0.5s ease-in-out;
         }
         .section {
             padding: 80px 0;
+            /* NEW: Added for active link highlighting */
+            scroll-margin-top: 70px;
         }
         .section-title {
             text-align: center;
@@ -57,7 +84,7 @@
             content: '';
             width: 60px;
             height: 4px;
-            background: #0d6efd;
+            background: var(--primary-color);
             position: absolute;
             bottom: -10px;
             left: 50%;
@@ -66,8 +93,14 @@
         }
         .skill-icon {
             font-size: 3rem;
-            color: #0d6efd;
+            color: var(--primary-color);
             margin-bottom: 15px;
+            /* NEW: Added transition for hover effect */
+            transition: transform 0.3s ease;
+        }
+        /* NEW: Added hover effect for skill icons */
+        .skill-icon:hover {
+            transform: scale(1.1);
         }
         .project-card {
             border: none;
@@ -119,8 +152,8 @@
             width: 25px;
             height: 25px;
             right: -12px;
-            background-color: white;
-            border: 4px solid #0d6efd;
+            background-color: var(--white-color);
+            border: 4px solid var(--primary-color);
             top: 15px;
             border-radius: 50%;
             z-index: 1;
@@ -128,40 +161,58 @@
         .timeline-container.right::after { left: -13px; }
         .timeline-content {
             padding: 20px 30px;
-            background-color: white;
+            background-color: var(--white-color);
             position: relative;
             border-radius: 6px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.05);
         }
         .contact-section {
-            background-color: #343a40;
-            color: #f8f9fa;
+            background-color: var(--dark-color);
+            color: var(--light-color);
         }
-        .contact-section .section-title::after { background-color: #f8f9fa; }
-        .contact-section a { color: #f8f9fa; text-decoration: none; font-weight: 600; }
+        .contact-section .section-title::after { background-color: var(--light-color); }
+        .contact-section a { color: var(--light-color); text-decoration: none; font-weight: 600; }
         .contact-section a:hover { text-decoration: underline; }
         .social-links a {
-            color: #343a40;
+            color: var(--dark-color);
             font-size: 1.5rem;
             margin: 0 10px;
             transition: color 0.3s;
         }
         .social-links a:hover {
-            color: #0d6efd;
+            color: var(--primary-color);
         }
         footer {
             padding: 20px 0;
-            background-color: #ffffff;
+            background-color: var(--white-color);
             text-align: center;
+        }
+
+        /* NEW: Media query for responsive timeline on mobile */
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-container.left, .timeline-container.right {
+                left: 0%;
+            }
+            .timeline-container::after {
+                left: 19px;
+            }
         }
     </style>
 </head>
-<body>
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="80">
 
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">Rambabu D.</a>
+            <a class="navbar-brand fw-bold" href="#home">Rambabu D.</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -182,20 +233,20 @@
         <div class="container text-center text-lg-start">
             <div class="row align-items-center">
                 <div class="col-lg-4 text-center">
-                    <!-- TODO: Replace with the link to your professional photo -->
-                    <img src="https://via.placeholder.com/300" alt="Rambabu Dharanala" class="hero-img">
+                    <!-- TODO: Replace with the link to your professional photo. Example provided. -->
+                    <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=400&auto=format&fit=crop" alt="Professional headshot of Rambabu Dharanala" class="hero-img">
                 </div>
                 <div class="col-lg-8 mt-5 mt-lg-0">
                     <h1 class="display-4 fw-bold">Rambabu Dharanala</h1>
                     <h2 class="fw-light mb-4">I am a <span id="dynamic-title">Full Stack Java Developer</span></h2>
                     <div class="social-links mb-4">
-                        <a href="https://www.linkedin.com/in/ram-dharanala-6aa2a3244/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/in/ram-dharanala-6aa2a3244/" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
                         <!-- TODO: Replace with your GitHub profile link -->
-                        <a href="#" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="mailto:ramdharanala04@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+                        <a href="mailto:ramdharanala04@gmail.com" aria-label="Send an Email"><i class="fas fa-envelope"></i></a>
                     </div>
                     <!-- TODO: Replace with the link to your PDF resume -->
-                    <a href="#" class="btn btn-primary btn-lg px-4" download>Download CV</a>
+                    <a href="./assets/Rambabu_Dharanala_Resume.pdf" class="btn btn-primary btn-lg px-4" download>Download CV</a>
                 </div>
             </div>
         </div>
@@ -222,8 +273,9 @@
         <!-- Part 3: Skills -->
         <section id="skills" class="section bg-white">
             <div class="container">
-                <h2 class="section-title">Skills</h2>
+                <h2 class="section-title">My Toolbox</h2> <!-- CHANGED: More engaging title -->
                 <div class="row text-center gy-5">
+                    <!-- CHANGED: Combined "Testing & Tools" into the other categories for a cleaner 4-column layout -->
                     <div class="col-md-3">
                         <div class="skill-icon"><i class="fas fa-server"></i></div>
                         <h5 class="fw-bold">Backend</h5>
@@ -237,17 +289,12 @@
                     <div class="col-md-3">
                         <div class="skill-icon"><i class="fab fa-aws"></i></div>
                         <h5 class="fw-bold">Cloud & DevOps</h5>
-                        <p>AWS (EC2, S3, Lambda, EKS, CloudWatch), Docker, Kubernetes, Jenkins, Git, Maven</p>
+                        <p>AWS (EC2, S3, Lambda, EKS), Docker, Kubernetes, Jenkins, Git, Maven, CI/CD</p>
                     </div>
                     <div class="col-md-3">
                         <div class="skill-icon"><i class="fas fa-database"></i></div>
-                        <h5 class="fw-bold">Databases</h5>
-                        <p>PostgreSQL, MySQL, Oracle, MongoDB</p>
-                    </div>
-                    <div class="col-md-3 mx-auto">
-                        <div class="skill-icon"><i class="fas fa-tools"></i></div>
-                        <h5 class="fw-bold">Testing & Tools</h5>
-                        <p>JUnit, Mockito, Jira, Swagger, IntelliJ, VS Code</p>
+                        <h5 class="fw-bold">Databases & Tools</h5>
+                        <p>PostgreSQL, MySQL, Oracle, MongoDB, JUnit, Mockito, Jira, IntelliJ, VS Code</p>
                     </div>
                 </div>
             </div>
@@ -256,23 +303,23 @@
         <!-- Part 4: Projects -->
         <section id="projects" class="section">
             <div class="container">
-                <h2 class="section-title">Projects</h2>
+                <h2 class="section-title">Featured Projects</h2> <!-- CHANGED: More engaging title -->
                 <div class="row gy-4">
                     <!-- Project 1 -->
                     <div class="col-lg-6">
                         <div class="card project-card h-100">
-                            <!-- TODO: Replace with screenshot/diagram for Project 1 -->
-                            <img src="https://via.placeholder.com/600x400/343a40/ffffff?text=Enterprise+Returns+Platform" class="card-img-top" alt="Enterprise Returns Platform">
+                            <!-- TODO: Replace with screenshot. A tool like placehold.co can make better placeholders -->
+                            <img src="https://placehold.co/600x400/343a40/FFF/png?text=Enterprise+Returns+Platform" class="card-img-top" alt="Screenshot of the Enterprise Returns Platform">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title fw-bold">Enterprise Returns Platform</h5>
-                                <p class="card-text">Engineered and deployed a mission-critical returns platform using Spring Boot and Java 11. The system successfully processes over 50,000+ daily requests. I focused on optimizing PostgreSQL queries and implementing robust indexing strategies, which reduced data lookup times for refunds by 40%. The platform is deployed on AWS EC2 with auto-scaling, achieving 99.95% uptime.</p>
-                                <div class="mt-auto">
+                                <p class="card-text">Engineered a mission-critical returns platform processing 50,000+ daily requests. Optimized PostgreSQL queries and implemented indexing strategies, reducing data lookup times by 40%. Deployed on AWS EC2 with auto-scaling, achieving 99.95% uptime.</p>
+                                <div class="mt-auto pt-3">
                                     <p class="mb-2 fw-bold">Technologies Used:</p>
-                                    <span class="badge rounded-pill tech-badge">Java 11</span><span class="badge rounded-pill tech-badge">Spring Boot</span><span class="badge rounded-pill tech-badge">RESTful APIs</span><span class="badge rounded-pill tech-badge">PostgreSQL</span><span class="badge rounded-pill tech-badge">AWS EC2</span><span class="badge rounded-pill tech-badge">Jenkins</span>
+                                    <span class="badge rounded-pill tech-badge">Java 11</span><span class="badge rounded-pill tech-badge">Spring Boot</span><span class="badge rounded-pill tech-badge">PostgreSQL</span><span class="badge rounded-pill tech-badge">AWS EC2</span><span class="badge rounded-pill tech-badge">Jenkins</span>
                                     <div class="mt-3">
-                                        <!-- TODO: Add GitHub link -->
+                                        <!-- TODO: Add GitHub link (or disable if private) -->
                                         <a href="#" class="btn btn-outline-primary btn-sm">View Code</a>
-                                        <!-- TODO: Add Demo link -->
+                                        <!-- TODO: Add Demo link (or disable if not available) -->
                                         <a href="#" class="btn btn-primary btn-sm">Live Demo</a>
                                     </div>
                                 </div>
@@ -282,18 +329,15 @@
                     <!-- Project 2 -->
                     <div class="col-lg-6">
                         <div class="card project-card h-100">
-                            <!-- TODO: Replace with screenshot/diagram for Project 2 -->
-                            <img src="https://via.placeholder.com/600x400/343a40/ffffff?text=Healthcare+Compliance+Platform" class="card-img-top" alt="Healthcare Compliance Audit Platform">
+                            <img src="https://placehold.co/600x400/343a40/FFF/png?text=Healthcare+Audit+Platform" class="card-img-top" alt="Diagram of the Healthcare Compliance Audit Platform architecture">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title fw-bold">Healthcare Compliance Audit Platform</h5>
-                                <p class="card-text">Developed a high-throughput audit platform to support 15 healthcare providers, streamlining compliance and cutting manual review time by 40%. The architecture features a JMS-based messaging system with IBM MQ to ensure 99.99% message delivery for asynchronous audit events. Also managed secure, HIPAA-compliant file exchanges for sensitive claim attachments using AWS S3.</p>
-                                <div class="mt-auto">
+                                <p class="card-text">Developed a high-throughput audit platform supporting 15 healthcare providers, cutting manual review time by 40%. Utilized IBM MQ for a JMS-based messaging system ensuring 99.99% message delivery, and managed HIPAA-compliant files with AWS S3.</p>
+                                <div class="mt-auto pt-3">
                                     <p class="mb-2 fw-bold">Technologies Used:</p>
                                     <span class="badge rounded-pill tech-badge">Java 11</span><span class="badge rounded-pill tech-badge">Spring Boot</span><span class="badge rounded-pill tech-badge">IBM MQ</span><span class="badge rounded-pill tech-badge">AWS S3</span><span class="badge rounded-pill tech-badge">HIPAA</span>
                                     <div class="mt-3">
-                                        <!-- TODO: Add GitHub link -->
                                         <a href="#" class="btn btn-outline-primary btn-sm">View Code</a>
-                                        <!-- TODO: Add Demo link -->
                                         <a href="#" class="btn btn-primary btn-sm">Live Demo</a>
                                     </div>
                                 </div>
@@ -303,18 +347,15 @@
                     <!-- Project 3 -->
                     <div class="col-lg-6">
                         <div class="card project-card h-100">
-                            <!-- TODO: Replace with screenshot/diagram for Project 3 -->
-                            <img src="https://via.placeholder.com/600x400/343a40/ffffff?text=Cloud+Billing+Portal" class="card-img-top" alt="Centralized Cloud Billing Portal">
+                             <img src="https://placehold.co/600x400/343a40/FFF/png?text=Cloud+Billing+Portal" class="card-img-top" alt="Screenshot of the Centralized Cloud Billing Portal">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title fw-bold">Centralized Cloud Billing Portal</h5>
-                                <p class="card-text">Built a centralized billing portal for an enterprise logistics client using Spring Boot microservices and React.js. This system reduced revenue leakage by 8% by improving freight charge accuracy. I designed and deployed the containerized microservices using Docker and Kubernetes (EKS), significantly improving scalability and simplifying multi-region deployments.</p>
-                                <div class="mt-auto">
+                                <p class="card-text">Built a centralized billing portal using Spring Boot microservices and React.js, reducing revenue leakage by 8%. Designed and deployed containerized services using Docker and Kubernetes (EKS), improving scalability and simplifying multi-region deployments.</p>
+                                <div class="mt-auto pt-3">
                                     <p class="mb-2 fw-bold">Technologies Used:</p>
-                                    <span class="badge rounded-pill tech-badge">React.js</span><span class="badge rounded-pill tech-badge">Spring Boot</span><span class="badge rounded-pill tech-badge">Docker</span><span class="badge rounded-pill tech-badge">Kubernetes (EKS)</span><span class="badge rounded-pill tech-badge">JWT</span><span class="badge rounded-pill tech-badge">OAuth 2.0</span>
+                                    <span class="badge rounded-pill tech-badge">React.js</span><span class="badge rounded-pill tech-badge">Spring Boot</span><span class="badge rounded-pill tech-badge">Docker</span><span class="badge rounded-pill tech-badge">Kubernetes</span><span class="badge rounded-pill tech-badge">OAuth 2.0</span>
                                     <div class="mt-3">
-                                        <!-- TODO: Add GitHub link -->
                                         <a href="#" class="btn btn-outline-primary btn-sm">View Code</a>
-                                        <!-- TODO: Add Demo link -->
                                         <a href="#" class="btn btn-primary btn-sm">Live Demo</a>
                                     </div>
                                 </div>
@@ -324,18 +365,15 @@
                     <!-- Project 4 -->
                     <div class="col-lg-6">
                         <div class="card project-card h-100">
-                            <!-- TODO: Replace with screenshot/diagram for Project 4 -->
-                            <img src="https://via.placeholder.com/600x400/343a40/ffffff?text=AI-Powered+Chatbot" class="card-img-top" alt="AI-Powered Customer Chatbot">
+                            <img src="https://placehold.co/600x400/343a40/FFF/png?text=AI-Powered+Chatbot" class="card-img-top" alt="AI-Powered Customer Chatbot interface">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title fw-bold">AI-Powered Customer Chatbot</h5>
-                                <p class="card-text">Developed a customer-facing chatbot platform using Spring Boot and React.js. The chatbot automates over 10,000+ monthly loan queries, successfully reducing call center load by 25%. Customer communication for loan application updates was automated via scheduled AWS Lambda functions, which improved user engagement rates by 20%.</p>
-                                <div class="mt-auto">
+                                <p class="card-text">Developed a customer-facing chatbot that automates 10,000+ monthly loan queries, reducing call center load by 25%. Automated customer communication for loan updates via scheduled AWS Lambda functions, improving user engagement by 20%.</p>
+                                <div class="mt-auto pt-3">
                                     <p class="mb-2 fw-bold">Technologies Used:</p>
                                     <span class="badge rounded-pill tech-badge">React.js</span><span class="badge rounded-pill tech-badge">Spring Boot</span><span class="badge rounded-pill tech-badge">AWS Lambda</span>
                                     <div class="mt-3">
-                                        <!-- TODO: Add GitHub link -->
                                         <a href="#" class="btn btn-outline-primary btn-sm">View Code</a>
-                                        <!-- TODO: Add Demo link -->
                                         <a href="#" class="btn btn-primary btn-sm">Live Demo</a>
                                     </div>
                                 </div>
@@ -349,27 +387,40 @@
         <!-- Part 5: Experience -->
         <section id="experience" class="section bg-white">
             <div class="container">
-                <h2 class="section-title">Experience</h2>
+                <h2 class="section-title">Career Journey</h2> <!-- CHANGED: More engaging title -->
                 <div class="timeline">
+                    <!-- NEW: Added descriptive bullet points for a more impactful experience section -->
                     <div class="timeline-container right">
                         <div class="timeline-content">
                             <h5 class="fw-bold">Full Stack Developer</h5>
                             <p class="mb-1"><strong>Nordstrom</strong> | Minneapolis, MN</p>
-                            <small class="text-muted">February 2025 – Present</small>
+                            <small class="text-muted d-block mb-2">February 2025 – Present</small>
+                            <ul class="list-unstyled mb-0 small">
+                                <li>- Architect and develop features for the enterprise returns platform.</li>
+                                <li>- Enhance CI/CD pipelines for faster, more reliable deployments.</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="timeline-container left">
                         <div class="timeline-content">
                             <h5 class="fw-bold">Full Stack Engineer</h5>
                             <p class="mb-1"><strong>Optum</strong> | Minneapolis, MN</p>
-                            <small class="text-muted">December 2023 – January 2025</small>
+                            <small class="text-muted d-block mb-2">December 2023 – January 2025</small>
+                             <ul class="list-unstyled mb-0 small">
+                                <li>- Led the development of a compliance audit platform, improving efficiency by 40%.</li>
+                                <li>- Implemented a secure, HIPAA-compliant file transfer system using AWS S3.</li>
+                            </ul>
                         </div>
                     </div>
                      <div class="timeline-container right">
                         <div class="timeline-content">
                             <h5 class="fw-bold">Full-stack Java Developer</h5>
                             <p class="mb-1"><strong>Estes Express Lines</strong> | Minneapolis, MN</p>
-                            <small class="text-muted">February 2023 – November 2023</small>
+                            <small class="text-muted d-block mb-2">February 2023 – November 2023</small>
+                             <ul class="list-unstyled mb-0 small">
+                                <li>- Built and deployed a cloud billing portal using a microservices architecture.</li>
+                                <li>- Containerized applications with Docker and managed them with Kubernetes (EKS).</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="timeline-container left">
@@ -394,14 +445,14 @@
         <section id="education" class="section">
             <div class="container">
                 <h2 class="section-title">Education</h2>
-                <div class="row text-center">
+                <div class="row text-center gy-4 gy-md-0">
                     <div class="col-md-6">
                         <h4 class="fw-bold">Western Illinois University</h4>
-                        <p>Master of Science in Computer Science<br>Macomb, IL</p>
+                        <p class="mb-0">Master of Science in Computer Science<br>Macomb, IL</p>
                     </div>
                     <div class="col-md-6">
                         <h4 class="fw-bold">Jawaharlal Nehru Technological University</h4>
-                        <p>Bachelor of Technology in Computer Science<br>India</p>
+                        <p class="mb-0">Bachelor of Technology in Computer Science<br>India</p>
                     </div>
                 </div>
             </div>
@@ -411,7 +462,7 @@
         <section id="contact" class="section contact-section">
             <div class="container text-center">
                 <h2 class="section-title">Get In Touch</h2>
-                <p class="lead mb-4">My inbox is always open. Whether you have a question or just want to say hi, I’ll get back to you!</p>
+                <p class="lead mb-4">My inbox is always open. Whether you have a question, a project idea, or just want to say hi, I’ll get back to you!</p>
                 <a href="mailto:ramdharanala04@gmail.com" class="btn btn-outline-light btn-lg">Say Hello</a>
             </div>
         </section>
@@ -427,8 +478,9 @@
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Custom JavaScript for Dynamic Title -->
+    <!-- Custom JavaScript -->
     <script>
+        // Dynamic Title Changer
         const titles = [
             "Full Stack Java Developer",
             "Cloud & Microservices Specialist",
@@ -437,20 +489,40 @@
         let currentIndex = 0;
         const dynamicTitleElement = document.getElementById('dynamic-title');
 
-        function changeTitle() {
-            // Fade out
-            dynamicTitleElement.style.opacity = 0;
-
-            setTimeout(() => {
-                currentIndex = (currentIndex + 1) % titles.length;
-                dynamicTitleElement.textContent = titles[currentIndex];
-                // Fade in
-                dynamicTitleElement.style.opacity = 1;
-            }, 500); // Wait for fade out to complete
+        if (dynamicTitleElement) {
+            function changeTitle() {
+                dynamicTitleElement.style.opacity = 0;
+                setTimeout(() => {
+                    currentIndex = (currentIndex + 1) % titles.length;
+                    dynamicTitleElement.textContent = titles[currentIndex];
+                    dynamicTitleElement.style.opacity = 1;
+                }, 500);
+            }
+            setInterval(changeTitle, 3000);
         }
 
-        // Change title every 3 seconds (3000 milliseconds)
-        setInterval(changeTitle, 3000);
+        // NEW: Active Nav Link on Scroll
+        const sections = document.querySelectorAll('section, header');
+        const navLi = document.querySelectorAll('nav .navbar-nav .nav-item .nav-link');
+
+        window.addEventListener('scroll', ()=> {
+            let current = '';
+            sections.forEach( section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLi.forEach( a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href') == '#' + current) {
+                    a.classList.add('active');
+                }
+            });
+        });
+
     </script>
 </body>
 </html>
