@@ -3,344 +3,454 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rambabu Dharanala | Portfolio</title>
+    <title>Rambabu Dharanala | Full Stack Developer</title>
     
-    <!-- Google Fonts & Icons -->
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Custom CSS -->
+    <!-- Custom Styles -->
     <style>
-        :root {
-            --primary-color: #5686f5;
-            --dark-color: #1c1d25;
-            --text-color: #555;
-            --bg-color: #f7f8fc;
-            --white-color: #ffffff;
-            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-        }
-
-        html { scroll-behavior: smooth; }
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.7;
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            background-color: #f8f9fa;
+            color: #343a40;
         }
-        
-        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
-
-        /* --- Navigation --- */
         .navbar {
-            position: fixed; width: 100%; top: 0; left: 0; z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid #eee;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
-        .nav-brand { font-size: 1.5rem; font-weight: 600; color: var(--dark-color); text-decoration: none; }
-        .nav-links { list-style: none; display: flex; gap: 35px; margin: 0; padding: 0; }
-        .nav-links a { text-decoration: none; color: var(--text-color); font-weight: 500; transition: color 0.3s; }
-        .nav-links a:hover, .nav-links a.active { color: var(--primary-color); }
-        .mobile-nav-toggle { display: none; font-size: 1.8rem; color: var(--dark-color); background: none; border: none; cursor: pointer; }
-
-        /* --- Animated Shapes --- */
-        .shape {
-            position: absolute;
-            background-color: rgba(86, 134, 245, 0.1);
+        .hero {
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        .hero-img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
             border-radius: 50%;
-            z-index: 0;
-            animation: float 20s infinite linear;
+            border: 8px solid #e9ecef;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        .s1 { width: 100px; height: 100px; top: 15%; left: 5%; animation-duration: 25s; }
-        .s2 { width: 60px; height: 60px; bottom: 10%; right: 5%; animation-duration: 20s; }
-        .s3 { width: 80px; height: 80px; top: 20%; right: 15%; animation-duration: 30s; }
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(180deg); }
-            100% { transform: translateY(0px) rotate(360deg); }
+        #dynamic-title {
+            color: #0d6efd;
+            transition: opacity 0.5s ease-in-out;
         }
-
-        /* --- Hero Section --- */
-        #home {
-            min-height: 100vh; display: flex; align-items: center; position: relative;
-            background-color: var(--white-color); z-index: 1;
+        .section {
+            padding: 80px 0;
         }
-        .hero-container { display: flex; align-items: center; justify-content: space-between; gap: 40px; position: relative; z-index: 2;}
-        .hero-text { max-width: 550px; }
-        .hero-text .hello { color: var(--primary-color); font-weight: 600; letter-spacing: 1px; }
-        .hero-text h1 { font-size: 3.5rem; font-weight: 700; color: var(--dark-color); margin: 10px 0; }
-        .hero-text h2 { font-size: 1.8rem; font-weight: 400; color: var(--dark-color); margin-bottom: 20px; }
-        .hero-buttons { display: flex; flex-wrap: wrap; gap: 15px; }
-        .btn {
-            padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 500;
-            display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s;
-        }
-        .btn-primary { background-color: var(--primary-color); color: var(--white-color); }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(86, 134, 245, 0.4); }
-        .btn-secondary { background-color: var(--white-color); color: var(--dark-color); border: 1px solid #ddd; }
-        .btn-secondary:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
-        
-        .hero-image {
-            width: 350px; height: 350px; border-radius: 50%; object-fit: cover;
-            border: 10px solid var(--white-color); box-shadow: 0 10px 50px rgba(0,0,0,0.1);
-            animation: float-image 4s ease-in-out infinite;
-        }
-        @keyframes float-image {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0); }
-        }
-
-        /* --- General Section Styling --- */
-        .section { padding: 100px 0; }
         .section-title {
-            text-align: center; font-size: 2.5rem; font-weight: 700;
-            color: var(--dark-color); margin-bottom: 60px;
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 600;
+            position: relative;
         }
-
-        /* --- About & Skills Section --- */
-        #about p { text-align: center; max-width: 800px; margin: 0 auto 60px auto; font-size: 1.1rem; }
-        .skills-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: #0d6efd;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
         }
-        .skill-card {
-            background: var(--white-color); padding: 30px; border-radius: 10px;
-            box-shadow: var(--card-shadow); text-align: center;
-        }
-        .skill-card i { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px; }
-        .skill-card h3 { color: var(--dark-color); font-size: 1.2rem; }
-
-        /* --- Projects Section --- */
-        #projects { background-color: var(--white-color); }
-        .projects-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 30px;
+        .skill-icon {
+            font-size: 3rem;
+            color: #0d6efd;
+            margin-bottom: 15px;
         }
         .project-card {
-            background: var(--white-color); border-radius: 10px; overflow: hidden;
-            box-shadow: var(--card-shadow); display: flex; flex-direction: column;
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .project-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); }
-        .project-card-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
-        .project-card h3 { font-size: 1.3rem; color: var(--dark-color); margin-bottom: 10px; }
-        .project-card-tags { margin-top: auto; padding-top: 15px; }
-        .tag {
-            display: inline-block; background: #eef2fe; color: var(--primary-color);
-            padding: 4px 12px; border-radius: 15px; font-size: 0.8rem;
-            font-weight: 500; margin: 3px;
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.12);
         }
-
-        /* --- Contact Section --- */
-        #contact .container { text-align: center; max-width: 700px; }
-        #contact p { font-size: 1.1rem; margin-bottom: 30px; }
-        .contact-links a {
-            color: var(--dark-color); font-size: 2rem; margin: 0 15px;
-            transition: color 0.3s; display: inline-block;
+        .project-card img {
+            height: 220px;
+            object-fit: cover;
         }
-        .contact-links a:hover { color: var(--primary-color); transform: translateY(-5px); }
-        
-        /* --- Footer --- */
-        footer { text-align: center; padding: 30px 0; background-color: var(--white-color); border-top: 1px solid #eee; }
-
-        /* --- Scroll Animation --- */
-        .animated-section {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        .tech-badge {
+            background-color: #e9ecef;
+            color: #495057;
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            margin: 2px;
+            display: inline-block;
         }
-        .animated-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-
-        /* --- Mobile Responsive --- */
-        @media (max-width: 992px) {
-            .hero-container { flex-direction: column-reverse; text-align: center; padding-top: 80px; }
-            .hero-buttons { justify-content: center; }
-            .hero-image { width: 300px; height: 300px; }
-            .hero-text h1 { font-size: 2.8rem; }
-            .projects-grid { grid-template-columns: 1fr; }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #dee2e6;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
         }
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none; position: absolute; top: 70px; left: 0; width: 100%;
-                background-color: white; flex-direction: column; text-align: center;
-                padding: 10px 0; box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-            }
-            .nav-links.active { display: flex; }
-            .nav-links li { padding: 10px 0; }
-            .mobile-nav-toggle { display: block; }
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-container.left { left: 0; }
+        .timeline-container.right { left: 50%; }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            background-color: white;
+            border: 4px solid #0d6efd;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-container.right::after { left: -13px; }
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        .contact-section {
+            background-color: #343a40;
+            color: #f8f9fa;
+        }
+        .contact-section .section-title::after { background-color: #f8f9fa; }
+        .contact-section a { color: #f8f9fa; text-decoration: none; font-weight: 600; }
+        .contact-section a:hover { text-decoration: underline; }
+        .social-links a {
+            color: #343a40;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: #0d6efd;
+        }
+        footer {
+            padding: 20px 0;
+            background-color: #ffffff;
+            text-align: center;
         }
     </style>
 </head>
-<body data-bs-spy="scroll" data-bs-target="#navbar">
-    
-    <!-- Background Shapes -->
-    <div class="shape s1"></div>
-    <div class="shape s2"></div>
-    <div class="shape s3"></div>
+<body>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="#home" class="nav-brand">Rambabu D.</a>
-            <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Rambabu D.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home">
-        <div class="container hero-container">
-            <div class="hero-text animated-section">
-                <p class="hello">HELLO, I'M</p>
-                <h1>Rambabu Dharanala</h1>
-                <h2 id="dynamic-title">Full Stack Java Developer</h2>
-                <p>Crafting robust and scalable software solutions with precision and innovation.</p>
-                <div class="hero-buttons">
-                    <a href="https://www.linkedin.com/in/ram-dharanala-6aa2a3244/" target="_blank" class="btn btn-primary"><i class="fab fa-linkedin"></i> Connect on LinkedIn</a>
-                    <!-- TODO: Replace with your GitHub URL -->
-                    <a href="#" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> View on GitHub</a>
-                    <a href="Rambabu_Dharanala_Resume.pdf" class="btn btn-secondary" download><i class="fas fa-download"></i> Resume</a>
+    <!-- Part 1: Hero Section -->
+    <header class="hero" id="home">
+        <div class="container text-center text-lg-start">
+            <div class="row align-items-center">
+                <div class="col-lg-4 text-center">
+                    <!-- TODO: Replace with the link to your professional photo -->
+                    <img src="https://via.placeholder.com/300" alt="Rambabu Dharanala" class="hero-img">
+                </div>
+                <div class="col-lg-8 mt-5 mt-lg-0">
+                    <h1 class="display-4 fw-bold">Rambabu Dharanala</h1>
+                    <h2 class="fw-light mb-4">I am a <span id="dynamic-title">Full Stack Java Developer</span></h2>
+                    <div class="social-links mb-4">
+                        <a href="https://www.linkedin.com/in/ram-dharanala-6aa2a3244/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <!-- TODO: Replace with your GitHub profile link -->
+                        <a href="#" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="mailto:ramdharanala04@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                    <!-- TODO: Replace with the link to your PDF resume -->
+                    <a href="#" class="btn btn-primary btn-lg px-4" download>Download CV</a>
                 </div>
             </div>
-            <!-- TODO: Replace with the filename of your photo (e.g., "my-photo.jpg") -->
-            <img src="https://via.placeholder.com/350" alt="Rambabu Dharanala" class="hero-image animated-section">
         </div>
-    </section>
+    </header>
 
-    <!-- About Section -->
-    <section id="about" class="section animated-section">
-        <div class="container">
-            <h2 class="section-title">About & Skills</h2>
-            <p>I am a Full Stack Java Developer with over 6 years of experience in architecting and deploying scalable, cloud-native applications. I specialize in high-performance microservices and responsive frontends, with proven expertise in the AWS ecosystem and CI/CD automation.</p>
-            <div class="skills-grid">
-                <div class="skill-card"><i class="fas fa-code"></i><h3>Backend</h3><p>Java 8/11, Spring Boot, RESTful APIs, Microservices</p></div>
-                <div class="skill-card"><i class="fab fa-react"></i><h3>Frontend</h3><p>React.js, JavaScript, HTML5 & CSS3, Bootstrap</p></div>
-                <div class="skill-card"><i class="fab fa-aws"></i><h3>Cloud & DevOps</h3><p>AWS (EC2, S3, EKS), Docker, Kubernetes, Jenkins, Git</p></div>
-                <div class="skill-card"><i class="fas fa-database"></i><h3>Databases</h3><p>PostgreSQL, MySQL, Oracle, MongoDB</p></div>
+    <main>
+        <!-- Part 2: About Me -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <p class="lead">
+                            I'm a Full Stack Java Developer with over six years of experience in architecting and deploying scalable, cloud-native applications. My passion lies in building high-performance microservices with Spring Boot and creating responsive, intuitive frontends using React.js.
+                        </p>
+                        <p class="lead">
+                            I have proven expertise in leveraging the AWS ecosystem for infrastructure, automating CI/CD pipelines to ensure rapid and reliable releases, and leading projects through the full software development lifecycle. I thrive on solving complex problems to deliver robust, enterprise-grade solutions.
+                        </p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section animated-section">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-card-content">
-                        <h3>Enterprise Returns Platform</h3>
-                        <p>Engineered a platform for Nordstrom processing 50,000+ daily returns, improving data processing efficiency by 30%.</p>
-                        <div class="project-card-tags"><span class="tag">Java 11</span><span class="tag">Spring Boot</span><span class="tag">PostgreSQL</span><span class="tag">AWS</span></div>
+        <!-- Part 3: Skills -->
+        <section id="skills" class="section bg-white">
+            <div class="container">
+                <h2 class="section-title">Skills</h2>
+                <div class="row text-center gy-5">
+                    <div class="col-md-3">
+                        <div class="skill-icon"><i class="fas fa-server"></i></div>
+                        <h5 class="fw-bold">Backend</h5>
+                        <p>Java 8/11, Spring Boot, Spring Security, Hibernate, JPA, RESTful APIs, Microservices</p>
                     </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-card-content">
-                        <h3>Healthcare Compliance Platform</h3>
-                        <p>Developed an audit platform for Optum, using IBM MQ to ensure 99.99% message delivery for asynchronous events.</p>
-                        <div class="project-card-tags"><span class="tag">Java 11</span><span class="tag">IBM MQ</span><span class="tag">AWS S3</span><span class="tag">HIPAA</span></div>
+                    <div class="col-md-3">
+                        <div class="skill-icon"><i class="fab fa-react"></i></div>
+                        <h5 class="fw-bold">Frontend</h5>
+                        <p>React.js, Angular.js, JavaScript, TypeScript, HTML5, CSS3, Redux, Bootstrap</p>
                     </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-card-content">
-                        <h3>Centralized Cloud Billing Portal</h3>
-                        <p>Built a billing portal for Estes Express Lines using React, Docker, and Kubernetes, reducing revenue leakage by 8%.</p>
-                        <div class="project-card-tags"><span class="tag">React.js</span><span class="tag">Docker</span><span class="tag">Kubernetes</span></div>
+                    <div class="col-md-3">
+                        <div class="skill-icon"><i class="fab fa-aws"></i></div>
+                        <h5 class="fw-bold">Cloud & DevOps</h5>
+                        <p>AWS (EC2, S3, Lambda, EKS, CloudWatch), Docker, Kubernetes, Jenkins, Git, Maven</p>
                     </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-card-content">
-                        <h3>AI-Powered Customer Chatbot</h3>
-                        <p>Developed a chatbot for Bajaj Finserv, automating 10,000+ monthly loan queries using AWS Lambda for updates.</p>
-                        <div class="project-card-tags"><span class="tag">React.js</span><span class="tag">Spring Boot</span><span class="tag">AWS Lambda</span></div>
+                    <div class="col-md-3">
+                        <div class="skill-icon"><i class="fas fa-database"></i></div>
+                        <h5 class="fw-bold">Databases</h5>
+                        <p>PostgreSQL, MySQL, Oracle, MongoDB</p>
+                    </div>
+                    <div class="col-md-3 mx-auto">
+                        <div class="skill-icon"><i class="fas fa-tools"></i></div>
+                        <h5 class="fw-bold">Testing & Tools</h5>
+                        <p>JUnit, Mockito, Jira, Swagger, IntelliJ, VS Code</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section animated-section">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <p>My inbox is always open. Whether you have a question, a project proposal, or just want to say hi, I’ll get back to you!</p>
-            <div class="contact-links">
-                <a href="mailto:ramdharanala04@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/ram-dharanala-6aa2a3244/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <!-- TODO: Replace with your GitHub URL -->
-                <a href="#" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <!-- Part 4: Projects -->
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title">Projects</h2>
+                <div class="row gy-4">
+                    <!-- Project 1 -->
+                    <div class="col-lg-6">
+                        <div class="card project-card h-100">
+                            <!-- TODO: Replace with screenshot/diagram for Project 1 -->
+                            <img src="https://via.placeholder.com/600x400/343a40/ffffff?text=Enterprise+Returns+Platform" class="card-img-top" alt="Enterprise Returns Platform">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold">Enterprise Returns Platform</h5>
+                                <p class="card-text">Engineered and deployed a mission-critical returns platform using Spring Boot and Java 11. The system successfully processes over 50,000+ daily requests. I focused on optimizing PostgreSQL queries and implementing robust indexing strategies, which reduced data lookup times for refunds by 40%. The platform is deployed on AWS EC2 with auto-scaling, achieving 99.95% uptime.</p>
+                                <div class="mt-auto">
+                                    <p class="mb-2 fw-bold">Technologies Used:</p>
+                                    <span class="badge rounded-pill tech-badge">Java 11</span><span class="badge rounded-pill tech-badge">Spring Boot</span><span class="badge rounded-pill tech-badge">RESTful APIs</span><span class="badge rounded-pill tech-badge">PostgreSQL</span><span class="badge rounded-pill tech-badge">AWS EC2</span><span class="badge rounded-pill tech-badge">Jenkins</span>
+                                    <div class="mt-3">
+                                        <!-- TODO: Add GitHub link -->
+                                        <a href="#" class="btn btn-outline-primary btn-sm">View Code</a>
+                                        <!-- TODO: Add Demo link -->
+                                        <a href="#" class="btn btn-primary btn-sm">Live Demo</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="col-lg-6">
+                        <div class="card project-card h-100">
+                            <!-- TODO: Replace with screenshot/diagram for Project 2 -->
+                            <img src="https://via.placeholder.com/600x400/343a40/ffffff?text=Healthcare+Compliance+Platform" class="card-img-top" alt="Healthcare Compliance Audit Platform">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold">Healthcare Compliance Audit Platform</h5>
+                                <p class="card-text">Developed a high-throughput audit platform to support 15 healthcare providers, streamlining compliance and cutting manual review time by 40%. The architecture features a JMS-based messaging system with IBM MQ to ensure 99.99% message delivery for asynchronous audit events. Also managed secure, HIPAA-compliant file exchanges for sensitive claim attachments using AWS S3.</p>
+                                <div class="mt-auto">
+                                    <p class="mb-2 fw-bold">Technologies Used:</p>
+                                    <span class="badge rounded-pill tech-badge">Java 11</span><span class="badge rounded-pill tech-badge">Spring Boot</span><span class="badge rounded-pill tech-badge">IBM MQ</span><span class="badge rounded-pill tech-badge">AWS S3</span><span class="badge rounded-pill tech-badge">HIPAA</span>
+                                    <div class="mt-3">
+                                        <!-- TODO: Add GitHub link -->
+                                        <a href="#" class="btn btn-outline-primary btn-sm">View Code</a>
+                                        <!-- TODO: Add Demo link -->
+                                        <a href="#" class="btn btn-primary btn-sm">Live Demo</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="col-lg-6">
+                        <div class="card project-card h-100">
+                            <!-- TODO: Replace with screenshot/diagram for Project 3 -->
+                            <img src="https://via.placeholder.com/600x400/343a40/ffffff?text=Cloud+Billing+Portal" class="card-img-top" alt="Centralized Cloud Billing Portal">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold">Centralized Cloud Billing Portal</h5>
+                                <p class="card-text">Built a centralized billing portal for an enterprise logistics client using Spring Boot microservices and React.js. This system reduced revenue leakage by 8% by improving freight charge accuracy. I designed and deployed the containerized microservices using Docker and Kubernetes (EKS), significantly improving scalability and simplifying multi-region deployments.</p>
+                                <div class="mt-auto">
+                                    <p class="mb-2 fw-bold">Technologies Used:</p>
+                                    <span class="badge rounded-pill tech-badge">React.js</span><span class="badge rounded-pill tech-badge">Spring Boot</span><span class="badge rounded-pill tech-badge">Docker</span><span class="badge rounded-pill tech-badge">Kubernetes (EKS)</span><span class="badge rounded-pill tech-badge">JWT</span><span class="badge rounded-pill tech-badge">OAuth 2.0</span>
+                                    <div class="mt-3">
+                                        <!-- TODO: Add GitHub link -->
+                                        <a href="#" class="btn btn-outline-primary btn-sm">View Code</a>
+                                        <!-- TODO: Add Demo link -->
+                                        <a href="#" class="btn btn-primary btn-sm">Live Demo</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 4 -->
+                    <div class="col-lg-6">
+                        <div class="card project-card h-100">
+                            <!-- TODO: Replace with screenshot/diagram for Project 4 -->
+                            <img src="https://via.placeholder.com/600x400/343a40/ffffff?text=AI-Powered+Chatbot" class="card-img-top" alt="AI-Powered Customer Chatbot">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold">AI-Powered Customer Chatbot</h5>
+                                <p class="card-text">Developed a customer-facing chatbot platform using Spring Boot and React.js. The chatbot automates over 10,000+ monthly loan queries, successfully reducing call center load by 25%. Customer communication for loan application updates was automated via scheduled AWS Lambda functions, which improved user engagement rates by 20%.</p>
+                                <div class="mt-auto">
+                                    <p class="mb-2 fw-bold">Technologies Used:</p>
+                                    <span class="badge rounded-pill tech-badge">React.js</span><span class="badge rounded-pill tech-badge">Spring Boot</span><span class="badge rounded-pill tech-badge">AWS Lambda</span>
+                                    <div class="mt-3">
+                                        <!-- TODO: Add GitHub link -->
+                                        <a href="#" class="btn btn-outline-primary btn-sm">View Code</a>
+                                        <!-- TODO: Add Demo link -->
+                                        <a href="#" class="btn btn-primary btn-sm">Live Demo</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Part 5: Experience -->
+        <section id="experience" class="section bg-white">
+            <div class="container">
+                <h2 class="section-title">Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-container right">
+                        <div class="timeline-content">
+                            <h5 class="fw-bold">Full Stack Developer</h5>
+                            <p class="mb-1"><strong>Nordstrom</strong> | Minneapolis, MN</p>
+                            <small class="text-muted">February 2025 – Present</small>
+                        </div>
+                    </div>
+                    <div class="timeline-container left">
+                        <div class="timeline-content">
+                            <h5 class="fw-bold">Full Stack Engineer</h5>
+                            <p class="mb-1"><strong>Optum</strong> | Minneapolis, MN</p>
+                            <small class="text-muted">December 2023 – January 2025</small>
+                        </div>
+                    </div>
+                     <div class="timeline-container right">
+                        <div class="timeline-content">
+                            <h5 class="fw-bold">Full-stack Java Developer</h5>
+                            <p class="mb-1"><strong>Estes Express Lines</strong> | Minneapolis, MN</p>
+                            <small class="text-muted">February 2023 – November 2023</small>
+                        </div>
+                    </div>
+                    <div class="timeline-container left">
+                        <div class="timeline-content">
+                            <h5 class="fw-bold">System Analyst</h5>
+                            <p class="mb-1"><strong>Western Illinois University</strong> | Macomb, IL</p>
+                            <small class="text-muted">September 2021 – October 2022</small>
+                        </div>
+                    </div>
+                    <div class="timeline-container right">
+                        <div class="timeline-content">
+                            <h5 class="fw-bold">Full Stack Developer</h5>
+                            <p class="mb-1"><strong>Bajaj Finserv</strong> | India</p>
+                            <small class="text-muted">August 2019 – July 2021</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Part 6: Education -->
+        <section id="education" class="section">
+            <div class="container">
+                <h2 class="section-title">Education</h2>
+                <div class="row text-center">
+                    <div class="col-md-6">
+                        <h4 class="fw-bold">Western Illinois University</h4>
+                        <p>Master of Science in Computer Science<br>Macomb, IL</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="fw-bold">Jawaharlal Nehru Technological University</h4>
+                        <p>Bachelor of Technology in Computer Science<br>India</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Part 7: Contact -->
+        <section id="contact" class="section contact-section">
+            <div class="container text-center">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="lead mb-4">My inbox is always open. Whether you have a question or just want to say hi, I’ll get back to you!</p>
+                <a href="mailto:ramdharanala04@gmail.com" class="btn btn-outline-light btn-lg">Say Hello</a>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer>
+    <footer class="bg-white">
         <div class="container">
-            <p>© 2024 Rambabu Dharanala. All Rights Reserved.</p>
+            <p class="text-muted mb-0">© 2024 Rambabu Dharanala. All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript for Dynamic Title -->
     <script>
-        // --- Mobile Navigation Toggle ---
-        const mobileNavToggle = document.getElementById('mobile-nav-toggle');
-        const navLinks = document.getElementById('nav-links');
-        mobileNavToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // --- Active Nav Link on Scroll ---
-        const sectionsForNav = document.querySelectorAll('section[id]');
-        const navLinkAnchors = document.querySelectorAll('.nav-links a');
-        window.addEventListener('scroll', () => {
-            let currentId = '';
-            sectionsForNav.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 75) {
-                    currentId = section.getAttribute('id');
-                }
-            });
-
-            navLinkAnchors.forEach(a => {
-                a.classList.remove('active');
-                if (a.getAttribute('href').includes(currentId)) {
-                    a.classList.add('active');
-                }
-            });
-        });
-
-        // --- Dynamic Title Typing ---
-        const titles = ["Full Stack Java Developer", "Cloud & Microservices Specialist", "Software Architect"];
-        let titleIndex = 0;
+        const titles = [
+            "Full Stack Java Developer",
+            "Cloud & Microservices Specialist",
+            "Software Architect"
+        ];
+        let currentIndex = 0;
         const dynamicTitleElement = document.getElementById('dynamic-title');
-        if(dynamicTitleElement) {
-            setInterval(() => {
-                titleIndex = (titleIndex + 1) % titles.length;
-                dynamicTitleElement.textContent = titles[titleIndex];
-            }, 4000);
+
+        function changeTitle() {
+            // Fade out
+            dynamicTitleElement.style.opacity = 0;
+
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % titles.length;
+                dynamicTitleElement.textContent = titles[currentIndex];
+                // Fade in
+                dynamicTitleElement.style.opacity = 1;
+            }, 500); // Wait for fade out to complete
         }
 
-        // --- Scroll Animations ---
-        const animatedSections = document.querySelectorAll('.animated-section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-        animatedSections.forEach(section => observer.observe(section));
+        // Change title every 3 seconds (3000 milliseconds)
+        setInterval(changeTitle, 3000);
     </script>
 </body>
 </html>
